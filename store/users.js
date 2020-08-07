@@ -13,12 +13,25 @@ export const mutations = {
     state.users = newState
 
     this.$cookies.set(USERS, newState)
+  },
+  updateAvatar(state, { id, avatar }) {
+    const users = [...state.users]
+    const index = state.users.findIndex(u => u.id === id)
+    const currentUser = state.users[index]
+    users[index] = { ...currentUser, avatar }
+
+    state.users = users
+
+    this.$cookies.set(USERS, users)
   }
 }
 
 export const actions = {
   register({ commit }, user) {
     commit('addUser', user)
+  },
+  updateAvatar({ commit }, payload) {
+    commit('updateAvatar', payload)
   }
 }
 

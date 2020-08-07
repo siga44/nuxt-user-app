@@ -6,7 +6,7 @@
       v-model="valid"
       lazy-validation
       class="d-flex flex-column justify-center align-center"
-      @submit.prevent="onSubmit({id: ''+Date.now(), name, email, password})"
+      @submit.prevent="onSubmit({name, email, password})"
     >
       <v-text-field
         class="input-field"
@@ -76,8 +76,13 @@ export default {
   },
 
   methods: {
-    onSubmit(user) {
+    onSubmit(userInfo) {
       if (this.$refs.form.validate()) {
+        const user = {
+          id: ''+Date.now(),
+          avatar: 'bgs-group.jpg',
+          ...userInfo
+        }
         this.$store.dispatch('users/register', user)
         this.$router.push('/login')
       }
