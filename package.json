@@ -9,7 +9,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxt/types": "^2.14.1",
     "@nuxtjs/axios": "^5.12.0",
+    "cookie-universal-nuxt": "^2.1.4",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {
